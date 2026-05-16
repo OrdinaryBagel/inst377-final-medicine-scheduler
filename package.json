@@ -1,17 +1,17 @@
 {
-  "name": "inst377-week13-sampleapp-fa26",
+  "name": "inst377-final-medicine-scheduler",
   "version": "1.0.0",
   "description": "INST377 - Week 13 Sample App",
-  "homepage": "https://github.com/anmoldash98/inst377-week13-sampleapp-fa26#readme",
+  "homepage": "https://github.com/OrdinaryBagel/inst377-final-medicine-scheduler#readme",
   "bugs": {
-    "url": "https://github.com/anmoldash98/inst377-week13-sampleapp-fa26/issues"
+    "url": "https://github.com/OrdinaryBagel/inst377-final-medicine-scheduler/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anmoldash98/inst377-week13-sampleapp-fa26.git"
+    "url": "git+https://github.com/OrdinaryBagel/inst377-final-medicine-scheduler.git"
   },
   "license": "ISC",
-  "author": "Anmol Dash",
+  "author": "Thomas Minnihan",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.104.1",
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.105.4",
     "body-parser": "^2.2.2",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",

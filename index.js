@@ -12,8 +12,9 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY;
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
+
 
 app.get('/', (req, res) => {
   res.sendFile('public/Customers.html', { root: __dirname });
@@ -22,7 +23,7 @@ app.get('/', (req, res) => {
 app.get('/customers', async (req, res) => {
   console.log('Attempting to get all customers!');
 
-  const { data, error } = await supabase.from('customer').select();
+  const { data, error } = await supabase.from('customers').select();
 
   if (error) {
     console.log(`Error: ${error}`);
