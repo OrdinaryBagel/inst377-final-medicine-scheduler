@@ -76,6 +76,9 @@ app.post('/newmedicine/:user', async (req, res) => {
   const user = req.params.user
 
   const { data, error } = await supabase
+  .rpc('exec_sql')
+
+  const { data, error } = await supabase
     .from('medication')
     .insert({
       medicine_name: medicine,
