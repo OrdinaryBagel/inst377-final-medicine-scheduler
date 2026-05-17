@@ -86,10 +86,6 @@ app.post('/newmedicine', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`App is available on port: ${port}`);
-});
-
 app.post('/signup/:user', async (req, res) => {
   console.log('Adding user');
   const user = req.params.user;
@@ -112,3 +108,9 @@ app.post('/signup/:user', async (req, res) => {
 app.listen(port, () => {
   console.log(`App is available on port: ${port}`);
 });
+
+app.listen(port, () => {
+  console.log(`App is available on port: ${port}`);
+});
+
+

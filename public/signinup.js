@@ -15,9 +15,9 @@ async function signin(){
 async function signup(){
     user = document.getElementById('username').value
     const checkrq = await fetch(`/user/${user}`);
-    const checkjson = await checkRes.json();
+    const checkjson = await checkrq.json();
 
-    if(checkJson.length > 0) {
+    if(checkjson.length > 0) {
         alert('username already in use');
         return;
     }
