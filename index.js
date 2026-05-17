@@ -98,7 +98,7 @@ app.get('/recall/:medicine',async (req,res) =>{
   const data = await response.json();
 });
 
-app.get('/recall/:medicine',async (req,res) =>{
+app.get('/shortage/:medicine',async (req,res) =>{
   const med = req.params.medicine
   const response = await fetch(`https://api.fda.gov/drug/shortages.json?search=openfda.brand_name=${med}`)
   const data = await response.json();

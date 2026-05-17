@@ -140,7 +140,7 @@ async function recallAndShortage(mednames){
             }
         }
     });
-    await fetch(`/shortage/${mednames[i]}`)
+    await fetch(`/recall/${mednames[i]}`)
     .then((result) => result.json())
     .then((resultJson) => {
         if('results' in resultJson){
