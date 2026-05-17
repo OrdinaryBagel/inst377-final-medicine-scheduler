@@ -54,7 +54,7 @@ async function populateCalender(calendar) {
                     id++;
                     k++;
                     [hours, minutes, seconds] = resultJson[i]['time_taken'][l].split(/[:+]/);
-                    current.setHours(hours, minutes, seconds)
+                    current.setHours(resultJson[i]['time_taken'][l])
                     calendar.addEvent({ id: id, title: medicine, start: current })
                     if(k==resultJson[i]['servings']){
                         return;
