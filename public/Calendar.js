@@ -18,13 +18,12 @@ Schedule(document.getElementById('schedule'), {
 });
 }
 */
-async function createCalender(){
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth'
         });
         calendar.render();
       });
-}
-window.onload = createCalender;
+
+/*window.onload = createCalender;*/
