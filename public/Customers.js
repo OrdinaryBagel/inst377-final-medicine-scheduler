@@ -14,6 +14,9 @@ async function createCustomer() {
   await loadCustomerData();
 }
 
+
+
+
 async function loadCustomerData() {
   await fetch('/customers')
     .then((result) => result.json())
