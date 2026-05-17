@@ -16,6 +16,7 @@ async function updateMedication(){
         const result = confirm(`${medicine} perscription already exists, would you like to overwrite it?`)
         if(result){
             await fetch(`/delete/${user}/${medicine}`, {
+                method: 'DELETE',
             });
             temp=false
         }
