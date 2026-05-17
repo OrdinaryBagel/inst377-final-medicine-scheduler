@@ -53,7 +53,7 @@ app.get('/signin/:user', async (req, res) => {
 app.delete('/delete/:user/:medicine',async (req,res)=>{
   const user = req.params.user
   const medicine = req.params.medicine
-  await supabase.from('customer').delete()
+  await supabase.from('medication').delete()
   .eq('username', user)
   .eq('medicine_name', medicine);
   res.send('Deleted');
@@ -72,7 +72,7 @@ app.post('/newmedicine/:user', async (req, res) => {
   const user = req.params.user
 
   const { data, error } = await supabase
-    .from('customer')
+    .from('medication')
     .insert({
       medicine_name: medicine,
       date_started: date,
