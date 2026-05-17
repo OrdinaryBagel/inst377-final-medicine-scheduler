@@ -22,3 +22,4 @@ function Swipe(){
 });
 }
 
+window.onload = Swipe;

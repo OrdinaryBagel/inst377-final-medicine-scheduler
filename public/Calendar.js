@@ -87,6 +87,12 @@ async function populateCalender(calendar) {
                 }
             }
         }
+        mednames=[]
+        mednames.length=i<resultJson.length
+        for(let i = 0; i<resultJson.length;i++){
+            mednames[i] = medicine = resultJson[i]["medicine_name"]
+        }
+        recallAndShortage(mednames)
     });
 }
 function between(days){
@@ -116,7 +122,42 @@ function between(days){
     }
     return daysbetween;
 }
-
+async function recallAndShortage(mednames){
+    for(let i = 0; i<mednames.length;i++){
+    await fetch(`/shortage/${mednames[i]}`)
+    .then((result) => result.json())
+    .then((resultJson) => {
+        if('results' in resultJson){
+            for(let k = 0; k<resultJson['results']; k++){
+                today = new Date()
+                update = new Date(resultJson['results'][k]["update_date"])
+                difference = (today-update)/86400000
+                if (difference<30){
+                    const h1 = document.createElement('h1');
+                    h1.textContent = `${mednames[i]} IS CURRENTLY IN SHORTAGE!`;
+                    document.getElementById('warnings').appendChild(h1);
+                }
+            }
+        }
+    });
+    await fetch(`/shortage/${mednames[i]}`)
+    .then((result) => result.json())
+    .then((resultJson) => {
+        if('results' in resultJson){
+            for(let k = 0; k<resultJson['results']; k++){
+                today = new Date()
+                update = new Date(resultJson['results'][k]["update_date"])
+                difference = (today-update)/86400000
+                if (difference<30){
+                    const h1 = document.createElement('h1');
+                    h1.textContent = `${mednames[i]} IS CURRENTLY IN RECALL, LOOK ONLINE TO SEE IF IT AFFECTS YOU!`;
+                    document.getElementById('warnings').appendChild(h1);
+                }
+            }
+        }
+    });
+    }
+}
 
 
 window.onload = createCalendar;

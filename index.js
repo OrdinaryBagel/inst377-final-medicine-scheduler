@@ -86,6 +86,24 @@ app.post('/newmedicine', async (req, res) => {
   }
 });
 
+app.get('/NYTnews',async (req,res) =>{
+  const response = await fetch(`https://api.nytimes.com/svc/topstories/v2/health.json?api-key=${process.env.NYTAPIKEY}`)
+  const data = await response.json();
+  res.json(data)
+});
+
+app.get('/recall/:medicine',async (req,res) =>{
+  const med = req.params.medicine
+  const response = await fetch(`https://api.fda.gov/drug/enforcement.json?search=openfda.brand_name=${med}`)
+  const data = await response.json();
+});
+
+app.get('/recall/:medicine',async (req,res) =>{
+  const med = req.params.medicine
+  const response = await fetch(`https://api.fda.gov/drug/shortages.json?search=openfda.brand_name=${med}`)
+  const data = await response.json();
+});
+
 app.post('/signup/:user', async (req, res) => {
   console.log('Adding user');
   const user = req.params.user;
