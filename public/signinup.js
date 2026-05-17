@@ -14,7 +14,7 @@ async function signin(){
 }
 async function signup(){
     user = document.getElementById('username').value
-    const checkrq = await fetch(`/user/${user}`);
+    const checkrq = await fetch(`/signin/${user}`);
     const checkjson = await checkrq.json();
 
     if(checkjson.length > 0) {
