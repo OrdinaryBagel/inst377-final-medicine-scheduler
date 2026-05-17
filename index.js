@@ -85,7 +85,7 @@ app.post('/newmedicine/:user', async (req, res) => {
       times_missed: [],
       servings: servings,
       days_taken_week: daysweeks,
-      days_taken_month: daysmonth,
+      days_taken_month: `{${daysmonth.join(',')}}`,
       username: user,
     })
     .select();
