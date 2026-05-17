@@ -19,13 +19,27 @@ const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
 
 
 app.get('/', (req, res) => {
-  res.sendFile('public/MedicineCalendar.html', { root: __dirname });
+  res.sendFile('public/SignInup.html', { root: __dirname });
 });
 
 app.get('/medication/:user', async (req, res) => {
   console.log('Attempting to get usertest medicine information');
   const username = req.params.user;
   const { data, error } = await supabase.from('medication').select().eq('username',username);
+
+  if (error) {
+    console.log(`Error: ${error}`);
+    res.statusCode = 500;
+    res.send(error);
+  } else {
+    console.log('Recieved Data:', data.length);
+    res.json(data);
+  }
+});
+app.get('/signin/:user', async (req, res) => {
+  console.log('Attempting to get usertest medicine information');
+  const username = req.params.user;
+  const { data, error } = await supabase.from('Users').select().eq('username',username);
 
   if (error) {
     console.log(`Error: ${error}`);
@@ -60,6 +74,29 @@ app.post('/newmedicine', async (req, res) => {
       customer_first_name: firstName,
       customer_last_name: lastName,
       customer_state: state,
+    })
+    .select();
+
+  if (error) {
+    console.log(`Error: ${error}`);
+    res.statusCode = 500;
+    res.send(error);
+  } else {
+    res.json(data);
+  }
+});
+
+app.listen(port, () => {
+  console.log(`App is available on port: ${port}`);
+});
+
+app.post('/signup/:user', async (req, res) => {
+  console.log('Adding user');
+  const user = req.params.user;
+  const { data, error } = await supabase
+    .from('customer')
+    .insert({
+      username: user,
     })
     .select();
 
