@@ -40,6 +40,7 @@ async function updateMedication(){
     },
   }).then((result) => result.json());
 }
+window.location.href = '/MedicineCalendar.html';
 }
 async function removeMedication(){
 
