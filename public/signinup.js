@@ -24,9 +24,9 @@ async function signup(){
     const signuprq = await fetch(`/signup/${user}`, {
         method: 'POST',
     });
-    const signupjson = await signupRes.json();
+    const signupjson = await signuprq.json();
 
-    if(signupRes.ok) {
+    if(signuprq.ok) {
         localStorage.setItem('user', user);
         window.location.href = '/MedicineCalendar.html';
     } else {
