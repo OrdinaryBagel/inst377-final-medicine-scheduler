@@ -50,12 +50,13 @@ app.get('/signin/:user', async (req, res) => {
     res.json(data);
   }
 });
-app.post('/delete/:user/:medicine',async (req,res)=>{
+app.delete('/delete/:user/:medicine',async (req,res)=>{
   const user = req.params.user
   const medicine = req.params.medicine
   await supabase.from('customer').delete()
   .eq('username', user)
   .eq('medicine_name', medicine);
+  res.send('Deleted');
 })
 app.post('/newmedicine/:user', async (req, res) => {
   console.log('Adding user');

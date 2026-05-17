@@ -6,7 +6,7 @@ async function updateMedication(){
     const medicine = document.getElementById('medicine_name').value
     const medrq = await fetch(`/medication/${user}`);
     const medjson = await medrq.json();
-    temp=false;
+    let temp=false;
     for(let i = 0;i<medjson.length;i++){
         if(medjson[i]['medicine_name'].toLowerCase()===medicine.toLowerCase()){
             temp=true
@@ -52,5 +52,5 @@ function addTime() {
   }
 
 function getTimes() {
-    return [...document.querySelectorAll('.time-input')].map(i => i.value).filter(k => k !== ''); 
+    return [...document.querySelectorAll('.times')].map(i => i.value).filter(k => k !== ''); 
 }

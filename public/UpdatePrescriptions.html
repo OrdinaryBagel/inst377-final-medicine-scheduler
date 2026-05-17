@@ -1,6 +1,6 @@
 <html>
     <head>
-        <script src="MedicationUpdate.js"></script>
+        <script src="MedicationUpdate.js" defer></script>
     </head>
     <body>
 
@@ -13,7 +13,7 @@
         <br>
         <div id="timecontainer">
         <label for="time">Time:</label>
-        <input type="time" className="times">
+        <input type="time" class="times">
         </div>
         <button onclick="addTime()">+ Add Time</button>
         <br>
@@ -44,7 +44,7 @@
         <label for="sunday">Sunday</label>
         <br>
         <label for="monthly">What days of the month(input must be comma separated intergers without spaces, only works with monthly, defaults to last day of the month if too large)</label>
-        <input type="text" id="monthly" pattern = "/^\d+(,\d+)*$/">
+        <input type="text" id="monthly" pattern = "^\d+(,\d+)*$">
         <input type="submit" name="Add medication">
         </form>
     </body>
