@@ -128,7 +128,7 @@ async function recallAndShortage(mednames){
     .then((result) => result.json())
     .then((resultJson) => {
         if('results' in resultJson){
-            for(let k = 0; k<resultJson['results']; k++){
+            for(let k = 0; k<resultJson['results'].length; k++){
                 today = new Date()
                 update = new Date(resultJson['results'][k]["update_date"])
                 difference = (today-update)/86400000
@@ -145,11 +145,11 @@ async function recallAndShortage(mednames){
     .then((result) => result.json())
     .then((resultJson) => {
         if('results' in resultJson){
-            for(let k = 0; k<resultJson['results']; k++){
+            for(let k = 0; k<resultJson['results'].length; k++){
                 today = new Date()
                 update = new Date(resultJson['results'][k]["update_date"])
-                console.log(difference)
                 difference = (today-update)/86400000
+                console.log(difference)
                 if (difference<30){
                     const h1 = document.createElement('h1');
                     h1.textContent = `${mednames[i]} IS CURRENTLY IN RECALL, LOOK ONLINE TO SEE IF IT AFFECTS YOU!`;
