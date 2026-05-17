@@ -96,6 +96,8 @@ app.post('/signup/:user', async (req, res) => {
     })
     .select();
 
+    console.log('insert error:', JSON.stringify(error));
+
   if (error) {
     console.log(`Error: ${error}`);
     res.statusCode = 500;
