@@ -63,6 +63,9 @@ async function populateCalender(calendar) {
                 if(resultJson[i]['cycle'] === "Week"){
                     current.setDate(current.getDate() + schedule[s])
                 }
+                if(resultJson[i]['cycle'] === "Daily"){
+                    current.setDate(current.getDate() + 1)
+                }
                 else if(resultJson[i]['cycle'] === "Month"){
                     numdays = new Date(current.getFullYear(), current.getMonth() + 1, 0).getDate();
                     if(numdays < schedule[s]){
