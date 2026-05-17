@@ -90,14 +90,11 @@ app.post('/signup/:user', async (req, res) => {
   console.log('Adding user');
   const user = req.params.user;
   const { data, error } = await supabase
-    .from('User')
+    .from('Users')
     .insert({
       username: user,
     })
     .select();
-
-    console.log('insert error:', JSON.stringify(error));
-    console.log('insert data:', JSON.stringify(data));
 
   if (error) {
     console.log(`Error: ${error}`);
