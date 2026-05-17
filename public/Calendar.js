@@ -30,10 +30,18 @@ async function createCalendar() {
     }
   });
   calendar.render();
-  populateCalender(calendar);
+  const user = localStorage.getItem('user');
+    await fetch(`/medication/${user}`)
+    .then((result) => result.json())
+    .then((resultJson) => {
+    if(!resultJson.length === 0){
+        populateCalender(calendar);
+    }
+    });
 }
 async function populateCalender(calendar) {
-    await fetch('/user/testuser')//this should be based on whos signed in if i get to that
+    const user = localStorage.getItem('user');
+    await fetch(`/medication/${user}`)
     .then((result) => result.json())
     .then((resultJson) => {
         for(let i = 0; i<resultJson.length;i++){

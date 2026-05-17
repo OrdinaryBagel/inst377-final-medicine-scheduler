@@ -22,10 +22,10 @@ app.get('/', (req, res) => {
   res.sendFile('public/MedicineCalendar.html', { root: __dirname });
 });
 
-app.get('/user/:user', async (req, res) => {
+app.get('/medication/:user', async (req, res) => {
   console.log('Attempting to get usertest medicine information');
   const username = req.params.user;
-  const { data, error } = await supabase.from('testuser').select().eq('username',username);
+  const { data, error } = await supabase.from('medication').select().eq('username',username);
 
   if (error) {
     console.log(`Error: ${error}`);
@@ -37,23 +37,8 @@ app.get('/user/:user', async (req, res) => {
   }
 });
 
-app.get('/customers', async (req, res) => {
-  console.log('Attempting to get all customers!');
-
-  const { data, error } = await supabase.from('customers').select();
-
-  if (error) {
-    console.log(`Error: ${error}`);
-    res.statusCode = 500;
-    res.send(error);
-  } else {
-    console.log('Recieved Data:', data.length);
-    res.json(data);
-  }
-});
-
-app.post('/customer', async (req, res) => {
-  console.log('Adding Customer');
+app.post('/newmedicine', async (req, res) => {
+  console.log('Adding user');
   console.log(`Request: ${JSON.stringify(req.body)}`);
 
   const firstName = req.body.firstName;
