@@ -22,7 +22,7 @@ async function medclick(){
     info.textContent = medjson["results"][0]["description"][0]
     }
     var remove = document.getElementById("info")
-    if(document.getElementById(removebutton) === null){
+    if(document.getElementById('removebutton') === null){
     var button1 = document.createElement("button");
     button1.dataset.status = 'active';
     button1.id = `removebutton`;
