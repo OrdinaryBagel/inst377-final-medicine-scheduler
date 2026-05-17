@@ -53,19 +53,20 @@ async function populateCalender(calendar) {
                 for(let l = 0; l<resultJson[i]['time_taken'].length; l++){
                     id++;
                     k++;
-                    skip = true
+                    noskip = true
+                    console.log(resultJson[i]['time_taken'][l])
                     [hours, minutes, seconds] = resultJson[i]['time_taken'][l].split(/[:+]/);
                     current.setHours(hours, minutes, seconds)
                     if(resultJson[i]["times_missed"] != null){
                         for(let p = 0;p<resultJson[i]["times_missed"].length;p++){
                             miss = new Date(resultJson[i]["times_missed"][p])
                             if ((current.getTime() === miss.getTime())){
-                                skip = false
+                                noskip = false
                                 break;
                             }
                         }
                     }
-                    if(skip){
+                    if(noskip){
                     calendar.addEvent({ 
                         id: id, 
                         title: medicine, 
