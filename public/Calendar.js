@@ -18,6 +18,7 @@ Schedule(document.getElementById('schedule'), {
 });
 }
 */
+id=0;
 async function createCalendar() {
   let calendarEl = document.getElementById('calendar');
   let calendar = new FullCalendar.Calendar(calendarEl, {
@@ -29,11 +30,79 @@ async function createCalendar() {
     }
   });
   calendar.render();
-  await fetch('/customers')
+  await fetch('/user/testuser')//this should be based on whos signed in if i get to that
     .then((result) => result.json())
     .then((resultJson) => {
-        
+        for(let i = 0; i<resultJson.length;i++){
+            current = new Date(resultJson[i]['date_started']);
+            s = 0;
+            if(resultJson[i]['cycle'] === "Week"){
+                schedule = between(resultJson[i]['days_taken_week']);
+            }
+            else if(resultJson[i]['cycle'] === "Month"){
+                schedule = resultJson[i]['days_taken_month'];
+            }
+            else{
+                schedule = null;
+            }
+            medicine = resultJson[i]["medicine_name"]
+            for(let k = 0; k<resultJson[i]['servings'];){
+                for(let l = 0; l<resultJson[i]['time_taken']; l++){
+                    id++;
+                    k++;
+                    [hours, minutes,seconds] = resultJson[i]['time_taken'][l].split(':');
+                    current.setHours(hours, minutes, seconds)
+                    calendar.addEvent({ id: '3', title: medicine, start: current })
+                    if(k==resultJson[i]['servings']){
+                        return;
+                    }
+                }
+                if(resultJson[i]['cycle'] === "Week"){
+                    current.setDate(current.getDate() + schedule[s])
+                }
+                else if(resultJson[i]['cycle'] === "Month"){
+                    numdays = new Date(current.getFullYear(), current.getMonth() + 1, 0).getDate();
+                    if(numdays < schedule[s]){
+                        current.setDate(numdays)
+                    }
+                    else{
+                        current.setDate(schedule[s])
+                    }
+                }
+                s++
+                if(s>schedule.length-1){
+                    s=0
+                }
+            }
+        }
     });
+}
+function between(days){
+    if(days.length ==1){
+        return 7
+    }
+    datemap = {
+        'monday': 1,
+        'tuesday': 2,
+        'wednesday': 3,
+        'thursday': 4,
+        'friday':5,
+        'saturday':6,
+        'sunday':7
+    }
+    temp = days.map(day => datemap[day]);
+    temp.sort()
+    daysbetween = []
+    daysbetween.length = temp.length
+    for(let t = 0; t<temp.length; t++){
+        if(t=temp.length -1){
+            daysbetween[t] = temp[t] + temp[0] - 7
+        }
+        else{
+        daysbetween[t] = temp[t+1] - temp[t]
+        }
+    }
+    return daysbetween;
 }
 
 window.onload = createCalendar;
