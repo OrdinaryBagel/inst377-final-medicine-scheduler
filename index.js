@@ -82,7 +82,7 @@ app.post('/newmedicine/:user', async (req, res) => {
       date_started: date,
       time_taken: time,
       cycle: cycle,
-      times_missed: [],
+      times_missed: `{}`,
       servings: servings,
       days_taken_week: daysweeks,
       days_taken_month: [],
