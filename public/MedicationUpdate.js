@@ -93,3 +93,5 @@ function addTime() {
 function getTimes() {
     return [...document.querySelectorAll('.times')].map(i => i.value).filter(k => k !== ''); 
 }
+
+window.onload = showinfo;
