@@ -88,7 +88,7 @@ async function populateCalender(calendar) {
             }
         }
         mednames=[]
-        mednames.length=i<resultJson.length
+        mednames.length=resultJson.length
         for(let i = 0; i<resultJson.length;i++){
             mednames[i] = medicine = resultJson[i]["medicine_name"]
         }
