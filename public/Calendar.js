@@ -132,6 +132,7 @@ async function recallAndShortage(mednames){
                 today = new Date()
                 update = new Date(resultJson['results'][k]["update_date"])
                 difference = (today-update)/86400000
+                console.log(difference)
                 if (difference<30){
                     const h1 = document.createElement('h1');
                     h1.textContent = `${mednames[i]} IS CURRENTLY IN SHORTAGE!`;
@@ -147,6 +148,7 @@ async function recallAndShortage(mednames){
             for(let k = 0; k<resultJson['results']; k++){
                 today = new Date()
                 update = new Date(resultJson['results'][k]["update_date"])
+                console.log(difference)
                 difference = (today-update)/86400000
                 if (difference<30){
                     const h1 = document.createElement('h1');
