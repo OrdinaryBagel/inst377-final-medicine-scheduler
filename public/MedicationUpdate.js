@@ -3,7 +3,7 @@ async function showinfo(){
     const user = localStorage.getItem('user');
     const medrq = await fetch(`/medication/${user}`);
     const medjson = await medrq.json();
-    for(let i = 0; i<medjson;i++){
+    for(let i = 0; i<medjson.length;i++){
     var button1 = document.createElement("button");
     button1.dataset.status = 'active';
     button1.id = `b${i}`;
