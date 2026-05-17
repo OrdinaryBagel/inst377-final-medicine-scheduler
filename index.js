@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 app.get('/user/:user', async (req, res) => {
   console.log('Attempting to get usertest medicine information');
   const username = req.params.user;
-  const { data, error } = await supabase.from('user').select();
+  const { data, error } = await supabase.from(username).select();
 
   if (error) {
     console.log(`Error: ${error}`);
