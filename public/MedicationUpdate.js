@@ -32,7 +32,7 @@ async function medclick(){
     remove.appendChild(button1);
     }
     else{
-        removebutton = document.getElementById(removebutton)
+        removebutton = document.getElementById('removebutton')
         removebutton.medicine = this.medicine
     }
 }
