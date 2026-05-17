@@ -170,7 +170,7 @@ async function addforget(reqs){
     const user = localStorage.getItem('user');
     medicine = reqs[1]
     date = new Date(reqs[0])
-    const forgetrq = await fetch(`/forget/${user}/${medicine}/${date.toISOString()}`, {
+    const forgetrq = await fetch(`/forget/${user}/${medicine}/${date.toLocaleString('sv')}`, {
         method: 'POST',
     });
     window.location.href = '/MedicineCalendar.html'
