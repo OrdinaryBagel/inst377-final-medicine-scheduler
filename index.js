@@ -97,6 +97,7 @@ app.post('/signup/:user', async (req, res) => {
     .select();
 
     console.log('insert error:', JSON.stringify(error));
+    console.log('insert data:', JSON.stringify(data));
 
   if (error) {
     console.log(`Error: ${error}`);
