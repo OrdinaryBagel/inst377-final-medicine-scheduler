@@ -18,25 +18,17 @@ Schedule(document.getElementById('schedule'), {
 });
 }
 */
-
-import { Calendar } from '@fullcalendar/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list';
-
-
-function createCalender(){
-        let calendarEl = document.getElementById('calendar');
-let calendar = new Calendar(calendarEl, {
-  plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
-  initialView: 'dayGridMonth',
-  headerToolbar: {
-    left: 'prev,next today',
-    center: 'title',
-    right: 'dayGridMonth,timeGridWeek,listWeek'
-  }
-});
-calendar.render();
+function createCalendar() {
+  let calendarEl = document.getElementById('calendar');
+  let calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,listWeek'
+    }
+  });
+  calendar.render();
 }
 
-window.onload = createCalender;
+window.onload = createCalendar;
