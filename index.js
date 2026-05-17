@@ -59,6 +59,10 @@ app.delete('/delete/:user/:medicine',async (req,res)=>{
   res.send('Deleted');
 })
 app.post('/newmedicine/:user', async (req, res) => {
+  console.log('month:', req.body.month, typeof req.body.month);
+  console.log('weeks:', req.body.weeks, typeof req.body.weeks);
+  console.log('time:', req.body.time, typeof req.body.time);
+  console.log('servings:', req.body.servings, typeof req.body.servings);
   console.log('Adding user');
   console.log(`Request: ${JSON.stringify(req.body)}`);
 
