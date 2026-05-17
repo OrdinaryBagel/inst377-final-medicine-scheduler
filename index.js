@@ -63,12 +63,12 @@ app.post('/newmedicine/:user', async (req, res) => {
   console.log(`Request: ${JSON.stringify(req.body)}`);
 
   const medicine = req.body.medicine_name;
-  const date = new Date(req.body.date);
+  const date = req.body.date;
   const time = req.body.time;
   const cycle = req.body.cycle;
   const servings = req.body.servings;
   const daysweeks = req.body.weeks;
-  const daysmonth = req.body.month;
+  const daysmonth = req.body.month.map(Number);
   const user = req.params.user
 
   const { data, error } = await supabase
@@ -87,9 +87,11 @@ app.post('/newmedicine/:user', async (req, res) => {
     .select();
 
   if (error) {
-    console.log(`Error: ${error}`);
-    res.statusCode = 500;
-    res.send(error);
+  console.log('Supabase error message:', error.message);  // ✅ actual message
+  console.log('Supabase error details:', error.details);
+  console.log('Supabase error code:', error.code);
+  res.statusCode = 500;
+  return res.send(error.message);  // sends readable string to client
   } else {
     res.json(data);
   }
