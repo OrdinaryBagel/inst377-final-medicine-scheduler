@@ -4,6 +4,6 @@ async function createCalender(){
     const { Calendar } = calendarjs;
     Calendar(document.getElementById('calender'), {
     type: 'inline',
-    startingDay: 1
+    value: new Date()
 });
 }
