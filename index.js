@@ -17,7 +17,7 @@ const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
 
 
 app.get('/', (req, res) => {
-  res.sendFile('public/Calender.html', { root: __dirname });
+  res.sendFile('public/Calendar.html', { root: __dirname });
 });
 
 app.get('/customers', async (req, res) => {
