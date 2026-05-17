@@ -55,15 +55,13 @@ async function populateCalender(calendar) {
                     k++;
                     noskip = true
                     time = resultJson[i]['time_taken'][l];
-                    console.log(time)
                     if(time == null) continue;
                     let [hours, minutes, seconds] = time.split(/[:+]/);
-                    console.log('hours:', hours, 'minutes:', minutes, 'seconds:', seconds)
                     current.setHours(hours, minutes, seconds)
                     if(resultJson[i]["times_missed"] != null){
                         for(let p = 0;p<resultJson[i]["times_missed"].length;p++){
                             miss = new Date(resultJson[i]["times_missed"][p])
-                            if ((current.getTime() === miss.getTime())){
+                            if (Math.abs(current.getTime()- miss.getTime())<3600000){
                                 noskip = false
                                 break;
                             }
