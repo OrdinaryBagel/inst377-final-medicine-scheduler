@@ -8,7 +8,7 @@ async function signin(){
     }
     else{
         localStorage.setItem('user', user);
-        window.location.href = '/calendar.html';
+        window.location.href = '/MedicineCalendar.html';
     }
     });
 }
@@ -28,7 +28,7 @@ async function signup(){
 
     if(signupRes.ok) {
         localStorage.setItem('user', user);
-        window.location.href = '/calendar.html';
+        window.location.href = '/MedicineCalendar.html';
     } else {
         alert('Error creating account');
     }
