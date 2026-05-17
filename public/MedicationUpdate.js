@@ -7,8 +7,9 @@ async function showinfo(){
     var button1 = document.createElement("button");
     button1.dataset.status = 'active';
     button1.id = `b${i}`;
-    button1.medicine = medjson['medicine_name']
+    button1.medicine = medjson['medicine_name'][i]
     button1.onclick = medclick;
+    button1.textContent= medjson['medicine_name'][i]
     buttons.appendChild(button1);
     }
 }
@@ -21,12 +22,16 @@ async function medclick(){
     info.textContent = medjson["results"][0]["description"][0]
     }
     var remove = document.getElementById("info")
+    remove.replaceChildren()
+    if(typeof button1 === "undefined"){
     var button1 = document.createElement("button");
     button1.dataset.status = 'active';
     button1.id = `removebutton`;
-    button1.medicine = medjson['medicine_name']
+    button1.medicine = this.medicine
+    button1.textContent = 'remove'
     button1.onclick = removeMedication;
     remove.appendChild(button1);
+    }
 }
 
 async function updateMedication(){
