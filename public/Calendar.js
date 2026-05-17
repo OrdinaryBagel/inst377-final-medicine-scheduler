@@ -30,6 +30,7 @@ async function createCalendar() {
     }
   });
   calendar.render();
+  populateCalender;
 }
 async function populateCalender() {
     await fetch('/user/testuser')//this should be based on whos signed in if i get to that
