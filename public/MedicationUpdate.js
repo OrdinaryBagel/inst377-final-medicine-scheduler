@@ -23,7 +23,7 @@ async function updateMedication(){
     const days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
     const week = days.filter(day => document.getElementById(day).checked);
     const times = getTimes()
-    const months = document.getElementById('monthly').value.split(',')
+    const months = document.getElementById('monthly').value.split(',').map(Number)
     await fetch(`/newmedicine/${user}`, {
     method: 'POST',
     body: JSON.stringify({

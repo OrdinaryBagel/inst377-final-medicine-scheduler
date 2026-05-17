@@ -91,11 +91,11 @@ app.post('/newmedicine/:user', async (req, res) => {
     .select();
 
   if (error) {
-  console.log('Supabase error message:', error.message);  // ✅ actual message
+  console.log('Supabase error message:', error.message);
   console.log('Supabase error details:', error.details);
   console.log('Supabase error code:', error.code);
   res.statusCode = 500;
-  return res.send(error.message);  // sends readable string to client
+  return res.send(error.message);
   } else {
     res.json(data);
   }
