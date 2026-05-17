@@ -58,16 +58,7 @@ async function populateCalender(calendar) {
                     if(time == null) continue;
                     let [hours, minutes, seconds] = time.split(/[:+]/);
                     current.setHours(hours, minutes, seconds)
-                    if(noskip){
-                    calendar.addEvent({ 
-                        id: id, 
-                        title: medicine, 
-                        start: new Date(current)
-                    })
-                    }
-                    else{
-                        k=k-1
-                    }
+                    calendar.addEvent({ id: id, title: medicine, start: new Date(current)})
                     if(k==resultJson[i]['servings']){
                         return;
                     }
