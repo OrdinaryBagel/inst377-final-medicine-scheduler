@@ -135,7 +135,7 @@ app.post('/forget/:user/:medicine/:date', async (req, res) => {
   const newforget = [...(forget.times_missed || []), date];
   const { data, error } = await supabase
   .from("medication")
-  .update({ times_missed: forget}).eq('username', user)
+  .update({ times_missed: newforget}).eq('username', user)
   .eq('medicine_name', medicine).select();
 
   if (error) {
