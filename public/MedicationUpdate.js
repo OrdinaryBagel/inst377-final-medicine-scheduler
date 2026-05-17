@@ -7,9 +7,9 @@ async function showinfo(){
     var button1 = document.createElement("button");
     button1.dataset.status = 'active';
     button1.id = `b${i}`;
-    button1.medicine = medjson['medicine_name'][i]
+    button1.medicine = medjson[i]['medicine_name']
     button1.onclick = medclick;
-    button1.textContent= medjson['medicine_name'][i]
+    button1.textContent= medjson[i]['medicine_name']
     buttons.appendChild(button1);
     }
 }
