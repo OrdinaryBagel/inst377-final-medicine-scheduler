@@ -7,6 +7,14 @@ async function createCalendar() {
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,listWeek'
+    },
+    eventClick: function(info) {
+        const result = confirm(`Did you forget to take this on 
+            ${info.event.start.toLocaleDateString()} 
+            at ${info.event.start.toLocaleTimeString()}`);
+        if(result){
+            
+        }
     }
   });
   calendar.render();
