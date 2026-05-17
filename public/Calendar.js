@@ -94,12 +94,12 @@ function between(days){
         'sunday':7
     }
     temp = days.map(day => datemap[day]);
-    temp.sort()
+    temp.sort((a, b) => a - b)
     daysbetween = []
     daysbetween.length = temp.length
     for(let t = 0; t<temp.length; t++){
-        if(t=temp.length -1){
-            daysbetween[t] = temp[t] + temp[0] - 7
+        if(t===temp.length -1){
+            daysbetween[t] = 7 - temp[t] + temp[0]
         }
         else{
         daysbetween[t] = temp[t+1] - temp[t]
