@@ -54,8 +54,11 @@ async function populateCalender(calendar) {
                     id++;
                     k++;
                     noskip = true
-                    console.log(typeof(resultJson[i]['time_taken'][l]))
-                    [hours, minutes, seconds] = resultJson[i]['time_taken'][l].split(/[:+]/);
+                    time = resultJson[i]['time_taken'][l];
+                    console.log(time)
+                    if(time == null) continue;
+                    let [hours, minutes, seconds] = time.split(/[:+]/);
+                    console.log('hours:', hours, 'minutes:', minutes, 'seconds:', seconds)
                     current.setHours(hours, minutes, seconds)
                     if(resultJson[i]["times_missed"] != null){
                         for(let p = 0;p<resultJson[i]["times_missed"].length;p++){
