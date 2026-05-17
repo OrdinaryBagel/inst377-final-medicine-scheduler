@@ -22,8 +22,7 @@ async function medclick(){
     info.textContent = medjson["results"][0]["description"][0]
     }
     var remove = document.getElementById("info")
-    remove.replaceChildren()
-    if(typeof button1 === "undefined"){
+    if(document.getElementById(removebutton) === null){
     var button1 = document.createElement("button");
     button1.dataset.status = 'active';
     button1.id = `removebutton`;
@@ -31,6 +30,10 @@ async function medclick(){
     button1.textContent = 'remove'
     button1.onclick = removeMedication;
     remove.appendChild(button1);
+    }
+    else{
+        removebutton = document.getElementById(removebutton)
+        removebutton.medicine = this.medicine
     }
 }
 
