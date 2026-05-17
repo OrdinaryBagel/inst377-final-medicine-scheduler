@@ -10,7 +10,7 @@ dotenv.config();
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
-app.use('/fullcalendar', express.static(__dirname + '/node_modules/@fullcalendar'));
+app.use('/fullcalendar', express.static(__dirname + '/node_modules/fullcalendar'));
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY;
