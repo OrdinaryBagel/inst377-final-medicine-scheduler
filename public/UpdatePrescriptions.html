@@ -1,9 +1,21 @@
 <html>
     <head>
         <script src="MedicationUpdate.js" defer></script>
+        <link rel="stylesheet" href="Final.css" />
     </head>
     <body>
-
+        <h1 class="title">Update & Info</h1>
+        <div class = "Nav">
+            <a class = "Navelm" href=MedicineCalendar.html>
+                <h2>Calendar</h2>
+            </a>
+            <a class = "Navelm" href=UpdatePrescriptions.html>
+                <h2>Update Prescriptions</h2>
+            </a>
+            <a class = "Navelm" href=HealthNews.html>
+                <h2>Health News</h2>
+            </a>
+        </div>
         <form onsubmit="updateMedication(); return false;">
         <label for="medicine_name">Medicine:</label>
         <input type="text" id="medicine_name">
@@ -46,5 +58,9 @@
         <input type="time" class="times">
         </div>
         <button onclick="addTime()">+ Add Time</button>
+        <div class = "buttonContainer" = "buttonContainer"></div>
+        <div class = "info" id="remove">
+            <p id="info"></p>
+        </div>
     </body>
 </html>

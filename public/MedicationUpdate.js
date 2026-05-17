@@ -1,6 +1,34 @@
 async function showinfo(){
-
+    var buttons = document.getElementById("buttonContainer");
+    const user = localStorage.getItem('user');
+    const medrq = await fetch(`/medication/${user}`);
+    const medjson = await medrq.json();
+    for(let i = 0; i<medjson;i++){
+    var button1 = document.createElement("button");
+    button1.dataset.status = 'active';
+    button1.id = `b${i}`;
+    button1.medicine = medjson['medicine_name']
+    button1.onclick = medclick;
+    buttons.appendChild(button1);
+    }
 }
+
+async function medclick(){
+    const medrq = await fetch(`https://api.fda.gov/drug/label.json?search=openfda.brand_name=${this.medicine}`);
+    const medjson = await medrq.json();
+    var info = document.getElementById("info")
+    if(medjson["results"][0]["description"][0].ok){
+    info.textContent = medjson["results"][0]["description"][0]
+    }
+    var remove = document.getElementById("info")
+    var button1 = document.createElement("button");
+    button1.dataset.status = 'active';
+    button1.id = `removebutton`;
+    button1.medicine = medjson['medicine_name']
+    button1.onclick = removeMedication;
+    remove.appendChild(button1);
+}
+
 async function updateMedication(){
     const user = localStorage.getItem('user');
     const medicine = document.getElementById('medicine_name').value
@@ -46,7 +74,14 @@ async function updateMedication(){
 window.location.href = '/MedicineCalendar.html';
 }
 async function removeMedication(){
-
+    const user = localStorage.getItem('user');
+    const result = confirm(`Do you want to remove ${this.medicine}`)
+    if(result){
+        await fetch(`/delete/${user}/${this.medicine}`, {
+            method: 'DELETE',
+        });
+        temp=false
+    }
 }
 function addTime() {
     const input = document.createElement('input');
