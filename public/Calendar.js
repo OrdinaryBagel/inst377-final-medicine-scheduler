@@ -59,8 +59,7 @@ async function populateCalender(calendar) {
                     if(resultJson[i]["times_missed"] != null){
                         for(let p = 0;p<resultJson[i]["times_missed"].length;p++){
                             miss = new Date(resultJson[i]["times_missed"][p])
-                            skip = true
-                            if (current === miss){
+                            if ((current.getTime() === miss.getTime())){
                                 skip = false
                                 break;
                             }
@@ -70,7 +69,7 @@ async function populateCalender(calendar) {
                     calendar.addEvent({ 
                         id: id, 
                         title: medicine, 
-                        start: current 
+                        start: new Date(current)
                     })
                     }
                     else{
