@@ -53,7 +53,6 @@ async function populateCalender(calendar) {
                 for(let l = 0; l<resultJson[i]['time_taken'].length; l++){
                     id++;
                     k++;
-                    console.log(k)
                     noskip = true
                     time = resultJson[i]['time_taken'][l];
                     if(time == null) continue;
@@ -71,6 +70,7 @@ async function populateCalender(calendar) {
                     }
                     if(noskip){
                     calendar.addEvent({ id: id, title: medicine, start: new Date(current)})
+                    console.log(k)
                     }
                     else{
                         k=k-1
