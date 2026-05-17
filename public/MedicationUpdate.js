@@ -31,7 +31,7 @@ async function updateMedication(){
       date: `${document.getElementById('date').value}`,
       time: times,
       cycle: `${document.getElementById('cycle').value}`,
-    servings: document.getElementById('servings').value.map(Number),
+    servings: Number(document.getElementById('servings').value),
     weeks: week,
     month: months
     }),
