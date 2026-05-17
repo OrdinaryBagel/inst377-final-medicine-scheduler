@@ -11,7 +11,13 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use('/fullcalendar', express.static(__dirname + '/node_modules/fullcalendar'));
-
+const fs = require('fs');
+app.get('/debug', (req, res) => {
+    const path = __dirname + '/node_modules/fullcalendar';
+    const exists = fs.existsSync(path);
+    const files = exists ? fs.readdirSync(path) : [];
+    res.json({ exists, files, dirname: __dirname });
+});
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY;
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
