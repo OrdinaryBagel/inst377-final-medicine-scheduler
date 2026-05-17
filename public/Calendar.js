@@ -61,6 +61,7 @@ async function populateCalender(calendar) {
                     if(resultJson[i]["times_missed"] != null){
                         for(let p = 0;p<resultJson[i]["times_missed"].length;p++){
                             miss = new Date(resultJson[i]["times_missed"][p])
+                            console.log('comparing:', current.toISOString(), 'vs missed:', miss.toISOString());
                             if (Math.abs(current.getTime()- miss.getTime())<3600000){
                                 noskip = false
                                 break;
