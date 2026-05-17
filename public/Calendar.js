@@ -72,6 +72,12 @@ async function populateCalender(calendar) {
                         break;
                     }
                 }
+                if(s>schedule.length-1){
+                    s=0
+                    if(resultJson[i]['cycle'] === "Month"){
+                        current.setMonth(current.getMonth() + 1);
+                    }
+                }
                 if(resultJson[i]['cycle'] === "Week"){
                     current.setDate(current.getDate() + schedule[s])
                 }
@@ -88,12 +94,6 @@ async function populateCalender(calendar) {
                     }
                 }
                 s++
-                if(s>schedule.length-1){
-                    s=0
-                    if(resultJson[i]['cycle'] === "Month"){
-                        current.setMonth(current.getMonth() + 1);
-                    }
-                }
             }
         }
         mednames=[]
