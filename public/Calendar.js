@@ -18,35 +18,8 @@ Schedule(document.getElementById('schedule'), {
 });
 }
 */
-document.addEventListener('DOMContentLoaded', function () {
-      const calendarEl = document.getElementById('calendar');
+async function createCalender(){
+    const calendarInstance = new calendarJs( "calendar" );
+}
 
-      // Create a new FullCalendar instance
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth', 
-        initialDate: '2026-05-16',   
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-        },
-        navLinks: true, // Click day/week names to navigate views
-        selectable: true, // Allow selecting dates
-        selectMirror: true,
-        events: [
-          {
-            title: 'Meeting',
-            start: '2026-05-17T10:30:00',
-            end: '2026-05-17T12:30:00'
-          },
-          {
-            title: 'Conference',
-            start: '2026-05-20',
-            end: '2026-05-22'
-          }
-        ]
-      });
-      calendar.render();
-    });
-
-/*window.onload = createCalender;*/
+window.onload = createCalender;
