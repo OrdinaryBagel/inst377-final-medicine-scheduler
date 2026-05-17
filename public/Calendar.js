@@ -11,7 +11,7 @@ async function createCalendar() {
     eventClick: function(info) {
         const result = confirm(`Did you forget to take this on ${info.event.start.toLocaleDateString()} at ${info.event.start.toLocaleTimeString()}`);
         if(result){
-            reqs = [info.event.start.toLocaleDateString(), info.event.start.toLocaleTimeString(),info.event.title]
+            reqs = [info.event.start, info.event.title]
             addforget(reqs)
         }
     }
@@ -168,12 +168,8 @@ async function recallAndShortage(mednames){
 }
 async function addforget(reqs){
     const user = localStorage.getItem('user');
-    medicine = reqs[2]
+    medicine = reqs[1]
     date = new Date(reqs[0])
-    time = reqs[1]
-    if(time == null) return;
-    let [hours, minutes, seconds] = time.split(/[:+]/);
-    date.setHours(hours, minutes, seconds)
     const forgetrq = await fetch(`/forget/${user}/${medicine}/${date.toISOString()}`, {
         method: 'POST',
     });
