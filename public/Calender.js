@@ -7,3 +7,5 @@ async function createCalender(){
     value: new Date()
 });
 }
+
+window.onload = createCalender;
