@@ -30,9 +30,9 @@ async function createCalendar() {
     }
   });
   calendar.render();
-  populateCalender;
+  populateCalender(calendar);
 }
-async function populateCalender() {
+async function populateCalender(calendar) {
     await fetch('/user/testuser')//this should be based on whos signed in if i get to that
     .then((result) => result.json())
     .then((resultJson) => {
@@ -82,7 +82,7 @@ async function populateCalender() {
 }
 function between(days){
     if(days.length ==1){
-        return 7
+        return [7]
     }
     datemap = {
         'monday': 1,
