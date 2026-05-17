@@ -70,9 +70,9 @@ app.post('/newmedicine/:user', async (req, res) => {
   const date = req.body.date;
   const time = req.body.time;
   const cycle = req.body.cycle;
-  const servings = req.body.servings;
+  const servings = Number(req.body.servings) || 1;
   const daysweeks = req.body.weeks;
-  const daysmonth = req.body.month.map(Number);
+  const daysmonth = req.body.month.filter(i => i !== '').map(Number);
   const user = req.params.user
 
   const { data, error } = await supabase
