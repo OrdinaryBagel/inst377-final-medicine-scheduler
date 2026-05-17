@@ -50,7 +50,7 @@ async function populateCalender(calendar) {
             }
             medicine = resultJson[i]["medicine_name"]
             for(let k = 0; k<resultJson[i]['servings'];){
-                for(let l = 0; l<resultJson[i]['time_taken']; l++){
+                for(let l = 0; l<resultJson[i]['time_taken'].length; l++){
                     id++;
                     k++;
                     [hours, minutes,seconds] = resultJson[i]['time_taken'][l].split(':');
