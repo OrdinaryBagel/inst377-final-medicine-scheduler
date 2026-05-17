@@ -125,6 +125,27 @@ app.post('/signup/:user', async (req, res) => {
   }
 });
 
+app.post('/forget/:user/:medicine/:date', async (req, res) => {
+  console.log('Adding forget');
+  const user = req.params.user;
+  const medicine = req.params.medicine;
+  const date = req.params.date;
+  const currforget = supabase.from('medication').select('times_missed').eq('username',user).eq('medicine_name',medicine);
+  console.log(currforget)
+  var newforget = currforget.push(date)
+  const { data, error } = await supabase
+  .from("medication")
+  .update({ times_missed: newforget}).select();
+
+  if (error) {
+    console.log(`Error: ${error}`);
+    res.statusCode = 500;
+    res.send(error);
+  } else {
+    res.json(data);
+  }
+});
+
 app.listen(port, () => {
   console.log(`App is available on port: ${port}`);
 });

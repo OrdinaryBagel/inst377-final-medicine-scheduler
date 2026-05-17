@@ -9,11 +9,10 @@ async function createCalendar() {
       right: 'dayGridMonth,timeGridWeek,listWeek'
     },
     eventClick: function(info) {
-        const result = confirm(`Did you forget to take this on 
-            ${info.event.start.toLocaleDateString()} 
-            at ${info.event.start.toLocaleTimeString()}`);
+        const result = confirm(`Did you forget to take this on ${info.event.start.toLocaleDateString()} at ${info.event.start.toLocaleTimeString()}`);
         if(result){
-            
+            reqs = [info.event.start.toLocaleDateString(), info.event.start.toLocaleTimeString(),info.event.title]
+            addforget(reqs)
         }
     }
   });
@@ -167,6 +166,19 @@ async function recallAndShortage(mednames){
         }
     });
     }
+}
+async function addforget(reqs){
+    const user = localStorage.getItem('user');
+    medicine = reqs[2]
+    date = new Date(reqs[0])
+    time = reqs[1]
+    if(time == null) continue;
+    let [hours, minutes, seconds] = time.split(/[:+]/);
+    date.setHours(hours, minutes, seconds)
+    const forgetrq = await fetch(`/forget/${user}/${medicine}/${date}`, {
+        method: 'POST',
+    });
+    window.location.href = '/MedicineCalendar.html'
 }
 
 
