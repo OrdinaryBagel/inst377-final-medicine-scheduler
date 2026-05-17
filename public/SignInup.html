@@ -5,11 +5,25 @@
         <script src="signinup.js"></script>
     </head>
     <body>
+        <h1 class = "title">Welcome!</h1>
+        <div class="signin">
         <h1>Enter a pre-existing username to sign in and a new one to sign up</h1>
         <p>NOTE: Do not enter sesitive information on any of these page as the information will not be secure!</p>
         <label for="userName">Username:</label>
         <input type="text" id="username">
+        <br>
         <button class="button-68" role="button" onclick="signin()">Sign in</button>
         <button class="button-68" role="button" onclick="signup()">Sign up</button>
+        </div>
+        <div class = "about">
+            <h1>About</h1>
+            <p>This page gives user the ability to schedule when they need to take
+                their prescription medications and warns them of shortages or recalls 
+                within the last month. Users will input the number of doses they received,
+                the schedule they need to take them on, and will be able to log days they missed
+                while having the calendar automatically update to reflect the additional doses.
+                Additionally, the page will contain a news tab that will directly link to NYT articles
+                about the healthcare sphere.</p>
+        </div>
     </body>
 </html>

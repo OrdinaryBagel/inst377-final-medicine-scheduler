@@ -14,17 +14,52 @@
 
 .Nav{
     text-align: center;
-    background-color: blueviolet;
+    background-color: rgb(255, 253, 111);
     white-space: nowrap;
 }
 .Navelm{
     text-align: center;
+    color:rgb(255, 74, 74);
     margin-left: 50px;
     margin-right: 50px;
     display: inline-block;
 }
 .Navelm:hover{
-    background-color: rgb(230, 154, 14);
+    background-color: rgb(14, 162, 230);
+}
+
+
+body {
+font-family: 'Roboto', sans-serif;
+background: #6fe3d2;
+background: linear-gradient(90deg,rgba(111, 227, 210, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+}
+.title{
+    text-align: center;
+    font-size: 70;
+    font-style: bold;
+}
+.about{
+    width: 60%;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 5%;
+    float:right;
+    border-color: #1e3984;
+    border-width: 2px;
+    border-style: solid;
+    background-color: white;
+}
+.signin{
+    width: 70%;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-left: 5%;
+    float:center;
+    border-color: #1e8449;
+    border-width: 2px;
+    border-style: solid;
+    background-color: white;
 }
 
 /* Sign in/up button CSS */
