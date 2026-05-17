@@ -20,6 +20,21 @@ app.get('/', (req, res) => {
   res.sendFile('public/MedicineCalendar.html', { root: __dirname });
 });
 
+app.get('/user/:user', async (req, res) => {
+  console.log('Attempting to get usertest medicine information');
+  const username = req.params.user;
+  const { data, error } = await supabase.from('user').select();
+
+  if (error) {
+    console.log(`Error: ${error}`);
+    res.statusCode = 500;
+    res.send(error);
+  } else {
+    console.log('Recieved Data:', data.length);
+    res.json(data);
+  }
+});
+
 app.get('/customers', async (req, res) => {
   console.log('Attempting to get all customers!');
 

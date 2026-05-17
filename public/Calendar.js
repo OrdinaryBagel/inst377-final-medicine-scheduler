@@ -18,7 +18,7 @@ Schedule(document.getElementById('schedule'), {
 });
 }
 */
-function createCalendar() {
+async function createCalendar() {
   let calendarEl = document.getElementById('calendar');
   let calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
@@ -29,6 +29,11 @@ function createCalendar() {
     }
   });
   calendar.render();
+  await fetch('/customers')
+    .then((result) => result.json())
+    .then((resultJson) => {
+        
+    });
 }
 
 window.onload = createCalendar;
