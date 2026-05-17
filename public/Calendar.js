@@ -49,7 +49,7 @@ async function populateCalender(calendar) {
                 schedule = [];
             }
             medicine = resultJson[i]["medicine_name"]
-            for(let k = 2; k<resultJson[i]['servings'];){
+            for(let k = 0; k<resultJson[i]['servings'];){
                 for(let l = 0; l<resultJson[i]['time_taken'].length; l++){
                     id++;
                     k++;
@@ -128,5 +128,7 @@ function between(days){
     }
     return daysbetween;
 }
+
+
 
 window.onload = createCalendar;
