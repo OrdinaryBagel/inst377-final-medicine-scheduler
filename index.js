@@ -50,30 +50,38 @@ app.get('/signin/:user', async (req, res) => {
     res.json(data);
   }
 });
-
-app.post('/newmedicine', async (req, res) => {
+app.post('/delete/:user/:medicine',async (req,res)=>{
+  const user = req.params.user
+  const medicine = req.params.medicine
+  await supabase.from('customer').delete()
+  .eq('username', user)
+  .eq('medicine_name', medicine);
+})
+app.post('/newmedicine/:user', async (req, res) => {
   console.log('Adding user');
   console.log(`Request: ${JSON.stringify(req.body)}`);
 
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
-  const state = req.body.state;
-
-  if (!isValidStateAbbreviation(state)) {
-    console.log(`State: ${state} is invalid`);
-    res.statusCode = 400;
-    res.json({
-      message: `${state} is not a valid 2 Letter Abbreviation for State`,
-    });
-    return;
-  }
+  const medicine = req.body.medicine_name;
+  const date = new Date(req.body.date);
+  const time = req.body.time;
+  const cycle = req.body.cycle;
+  const servings = req.body.servings;
+  const daysweeks = req.body.weeks;
+  const daysmonth = req.body.month;
+  const user = req.params.user
 
   const { data, error } = await supabase
     .from('customer')
     .insert({
-      customer_first_name: firstName,
-      customer_last_name: lastName,
-      customer_state: state,
+      medicine_name: medicine,
+      date_started: date,
+      time_taken: time,
+      cycle: cycle,
+      times_missed: [],
+      servings: servings,
+      days_taken_week: daysweeks,
+      days_taken_month: daysmonth,
+      username: user,
     })
     .select();
 

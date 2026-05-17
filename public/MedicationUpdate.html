@@ -1,0 +1,51 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <form onsubmit="updateMedication(); return false;">
+        <label for="medicine_name">Medicine:</label>
+        <input type="text" id="medicine_name">
+        <br>
+        <label for="date">Start Date:</label>
+        <input type="date" id="date">
+        <br>
+        <div id="timecontainer">
+        <label for="time">Time:</label>
+        <input type="time" className="times">
+        </div>
+        <button onclick="addTime()">+ Add Time</button>
+        <br>
+        <label for="cycle">Cycle:</label>
+        <select id="cycle">
+            <option value="Daily">Daily</option>
+            <option value="Week">Weekly</option>
+            <option value="Month">Monthly</option>
+        </select>        
+        <br>
+        <label for="servings">servings:</label>
+        <input type="number" id="servings">
+        <br>
+        <label>What days of the week will you take it(only works with weekly cycle)</label>
+        <input type="checkbox" id="monday" value="monday">
+        <label for="monday">Monday</label>
+        <input type="checkbox" id="tuesday" value="tuesday">
+        <label for="tuesday">Tuesday</label>
+        <input type="checkbox" id="wednesday" value="wednesday">
+        <label for="wednesday">Wednesday</label>
+        <input type="checkbox" id="thursday" value="thursday">
+        <label for="thursday">Thursday</label>
+        <input type="checkbox" id="friday" value="friday">
+        <label for="friday">Friday</label>
+        <input type="checkbox" id="saturday" value="saturday">
+        <label for="saturday">Saturday</label>
+        <input type="checkbox" id="sunday" value="sunday">
+        <label for="sunday">Sunday</label>
+        <br>
+        <label for="monthly">What days of the month(input must be comma separated intergers without spaces, only works with monthly, defaults to last day of the month if too large)</label>
+        <input type="text" id="monthly" pattern = "/^\d+(,\d+)*$/">
+        <input type="submit" name="Add medication">
+        </form>
+    </body>
+</html>
