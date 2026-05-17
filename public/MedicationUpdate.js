@@ -26,7 +26,7 @@ async function updateMedication(){
     const months = document.getElementById('monthly').value.split(',')
     await fetch(`/newmedicine/${user}`, {
     method: 'POST',
-    body: JSON.stringify({
+    body: JSON({
       medicine_name: `${document.getElementById('medicine_name').value}`,
       date: `${document.getElementById('date').value}`,
       time: times,
