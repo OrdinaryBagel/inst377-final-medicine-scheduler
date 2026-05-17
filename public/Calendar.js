@@ -37,7 +37,7 @@ async function populateCalender(calendar) {
     .then((result) => result.json())
     .then((resultJson) => {
         for(let i = 0; i<resultJson.length;i++){
-            current = new Date(resultJson[i]['date_started']);
+            current = new Date(resultJson[i]['date_started']+ 'T00:00:00');
             s = 0;
             if(resultJson[i]['cycle'] === "Week"){
                 schedule = between(resultJson[i]['days_taken_week']);
