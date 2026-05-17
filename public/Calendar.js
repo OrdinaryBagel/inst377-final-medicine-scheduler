@@ -52,7 +52,7 @@ async function createCalendar() {
                     k++;
                     [hours, minutes,seconds] = resultJson[i]['time_taken'][l].split(':');
                     current.setHours(hours, minutes, seconds)
-                    calendar.addEvent({ id: '3', title: medicine, start: current })
+                    calendar.addEvent({ id: id, title: medicine, start: current })
                     if(k==resultJson[i]['servings']){
                         return;
                     }
