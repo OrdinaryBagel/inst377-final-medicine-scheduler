@@ -76,9 +76,6 @@ app.post('/newmedicine/:user', async (req, res) => {
   const user = req.params.user
 
   const { data, error } = await supabase
-  .rpc('exec_sql')
-
-  const { data, error } = await supabase
     .from('medication')
     .insert({
       medicine_name: medicine,
@@ -88,7 +85,7 @@ app.post('/newmedicine/:user', async (req, res) => {
       times_missed: [],
       servings: servings,
       days_taken_week: daysweeks,
-      days_taken_month: `{${daysmonth.join(',')}}`,
+      days_taken_month: [],
       username: user,
     })
     .select();
