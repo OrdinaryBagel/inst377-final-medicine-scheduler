@@ -129,13 +129,14 @@ app.post('/forget/:user/:medicine/:date', async (req, res) => {
   console.log('Adding forget');
   const user = req.params.user;
   const medicine = req.params.medicine;
-  const date = req.params.date;
-  const currforget = supabase.from('medication').select('times_missed').eq('username',user).eq('medicine_name',medicine);
-  console.log(currforget)
-  var newforget = currforget.push(date)
+  const date = new Date(req.params.date);
+  const {data: forget} = supabase.from('medication').select('times_missed').eq('username',user).eq('medicine_name',medicine);
+  console.log(forget)
+  forget.push(date)
   const { data, error } = await supabase
   .from("medication")
-  .update({ times_missed: newforget}).select();
+  .update({ times_missed: forget}).eq('username', user)
+  .eq('medicine_name', medicine).select();
 
   if (error) {
     console.log(`Error: ${error}`);

@@ -56,7 +56,6 @@ async function populateCalender(calendar) {
                     if(resultJson[i]["times_missed"] != null){
                         for(let p = 0;p<resultJson[i]["times_missed"].length;p++){
                             miss = new Date(resultJson[i]["times_missed"][p])
-                            console.log('comparing:', current.toISOString(), 'vs missed:', miss.toISOString());
                             if (Math.abs(current.getTime()- miss.getTime())<3600000){
                                 noskip = false
                                 break;
@@ -172,10 +171,10 @@ async function addforget(reqs){
     medicine = reqs[2]
     date = new Date(reqs[0])
     time = reqs[1]
-    if(time == null) continue;
+    if(time == null) return;
     let [hours, minutes, seconds] = time.split(/[:+]/);
     date.setHours(hours, minutes, seconds)
-    const forgetrq = await fetch(`/forget/${user}/${medicine}/${date}`, {
+    const forgetrq = await fetch(`/forget/${user}/${medicine}/${date.toISOString()}`, {
         method: 'POST',
     });
     window.location.href = '/MedicineCalendar.html'
