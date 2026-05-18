@@ -22,4 +22,14 @@ function Swipe(){
 });
 }
 
-window.onload = Swipe;
+async function articles(){
+    const newsrq = await fetch(`/NYTnews`);
+    const newsjson = await newsrq.json();
+    for(let i = 0;i<5;i++){
+      article = document.getElementById(`s${i+1}`)
+      article.src = newsjson['results'][i]['multimedia']['url']
+      article.onclick = function(){window.location.href =newsjson['results'][i]['url'] }
+    }
+}
+
+window.onload = articles;
