@@ -27,7 +27,7 @@ async function articles(){
     const newsjson = await newsrq.json();
     for(let i = 0;i<5;i++){
       article = document.getElementById(`s${i+1}`)
-      article.src = newsjson['results'][i]['multimedia']['url']
+      article.src = newsjson['results'][i]['multimedia'][0]['url']
       article.onclick = function(){window.location.href =newsjson['results'][i]['url'] }
     }
 }
