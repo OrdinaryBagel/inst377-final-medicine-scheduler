@@ -20,7 +20,7 @@ function Swipe(){
     el: '.swiper-scrollbar',
   },
 });
-articles
+articles()  
 }
 
 async function articles(){

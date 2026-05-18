@@ -173,3 +173,16 @@ background: linear-gradient(90deg,rgba(111, 227, 210, 1) 0%, rgba(87, 199, 133, 
   background-color: #298e46;
   box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
+.inputdiv{
+  background-color: white;
+  border-radius: 2px;
+  border-color: black;
+  border-style: solid;
+}
+.removediv{
+  background-color: white;
+  border-radius: 2px;
+  border-color: black;
+  border-style: solid;
+  text-align: center;
+}

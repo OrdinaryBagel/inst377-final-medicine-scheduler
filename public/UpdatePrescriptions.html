@@ -16,6 +16,7 @@
                 <h2>Health News</h2>
             </a>
         </div>
+        <div class ="inputdiv">
         <form onsubmit="updateMedication(); return false;">
         <label for="medicine_name">Medicine:</label>
         <input type="text" id="medicine_name">
@@ -58,9 +59,12 @@
         <input type="time" class="times">
         </div>
         <button onclick="addTime()">+ Add Time</button>
+        </div>
+        <div class ="removediv">
         <div class = "buttonContainer" id= "buttonContainer"></div>
         <div class = "info" id="remove">
             <p id="info"></p>
+        </div>
         </div>
     </body>
 </html>
