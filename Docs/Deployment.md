@@ -11,25 +11,21 @@ This can be done through their website after making an account>\
 \
 #Step 3: Set up the supabase tables\
 There are 2 required tables.\
-1. \
-## Table `Users`\
-\
+1. 
+## Table `Users`
+
 ### Columns\
-\
+
 | Name | Type | Constraints |\
 |------|------|-------------|\
 | `id` | `int8` | Primary Identity |\
 | `created_at` | `timestamptz` |  |\
 | `username` | `varchar` |  |\
-\
-\
-2. \
-## Table `medication`\
-\
-feature test user\
-\
-### Columns\
-\
+
+2. 
+## Table `medication`
+feature test user
+### Columns
 | Name | Type | Constraints |\
 |------|------|-------------|\
 | `id` | `int8` | Primary Identity |\

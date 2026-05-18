@@ -10,8 +10,18 @@ Checks if the user exists in the Users table\
 Parameter   |   Type    |   Description\
 User            String      Username\
 \
-#GET\
+#GET /shortage/:medicine\
+Gets information on shortages of a medication\
+Parameter   |   Type    |   Description\
+Medicine        String      Medicine name\
 \
+#GET /recall/:medicine\
+Gets information on recalls of a medication\
+Parameter   |   Type    |   Description\
+Medicine        String      Medicine name\
+\
+#GET /NYTnews\
+Gets New York Times news articles about Healthcare\
 #POST /newmedicine/:user\
 Creates a new prescription for a user\
 Parameter   |   Type    |   Description\
@@ -29,6 +39,12 @@ Adds a user to the Users table if they dont already exist\
 Parameter   |   Type    |   Description\
 User            String      Username\
 \
+#POST /forget/:user/:medicine/:date\
+Adds a date to the times_missed array\
+Parameter   |   Type    |   Description\
+User            String      Username\
+date            Date        The date forgotten\
+Medicine        String      Medicine name\
 #DELETE /delete/:user/:medicine\
 Deletes a row that matches the username and Medication\
 Parameter   |   Type    |   Description\
