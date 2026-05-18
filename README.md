@@ -10,8 +10,8 @@ Medicine Scheduler is a web application deployed on Vercel that uses Supabase as
 URL: [inst377-final-medicine-scheduler.vercel.app](https://inst377-final-medicine-scheduler.vercel.app)
 
 #Docs
-[APIcalls](./docs/APIcalls.md)
-[Deployment](./docs/Deployment.md)
-[KnownBugs](./docs/KnownBugs.md)
-[Prep](./docs/Prep.md)
-[RoadMap](./docs/RoadMap.md)
+[APIcalls](/docs/APIcalls.md)
+[Deployment](/docs/Deployment.md)
+[KnownBugs](/docs/KnownBugs.md)
+[Prep](/docs/Prep.md)
+[RoadMap](/docs/RoadMap.md)
