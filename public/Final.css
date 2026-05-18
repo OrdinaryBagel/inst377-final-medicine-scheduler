@@ -118,7 +118,7 @@ background: linear-gradient(90deg,rgba(111, 227, 210, 1) 0%, rgba(87, 199, 133, 
   left: 20px;
   color: white;
   font-size: 15;
-  
+  background-color: black;
 }
 
 .warning{
