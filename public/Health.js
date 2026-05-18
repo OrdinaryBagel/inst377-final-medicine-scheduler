@@ -29,6 +29,8 @@ async function articles(){
       article = document.getElementById(`s${i+1}`)
       article.src = newsjson['results'][i]['multimedia'][0]['url']
       article.onclick = function(){window.location.href =newsjson['results'][i]['url'] }
+      title = document.getElementById(`h${i+1}`)
+      title.textContent = newsjson['results'][i]['title']
     }
     Swipe()
 }
