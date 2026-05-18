@@ -18,8 +18,8 @@ async function medclick(){
     const medrq = await fetch(`https://api.fda.gov/drug/label.json?search=openfda.brand_name=${this.medicine}`);
     const medjson = await medrq.json();
     var info = document.getElementById("info")
-    if(medjson["results"][0]["description"][0].ok){
-    info.textContent = medjson["results"][0]["description"][0]
+    if(medjson["results"][0]["package_label_principal_display_panel"][0] !== null){
+    info.textContent = medjson["results"][0]["package_label_principal_display_panel"][0]
     }
     var remove = document.getElementById("info")
     if(document.getElementById('removebutton') === null){
