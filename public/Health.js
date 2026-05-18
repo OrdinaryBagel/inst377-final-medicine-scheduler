@@ -20,6 +20,7 @@ function Swipe(){
     el: '.swiper-scrollbar',
   },
 });
+articles
 }
 
 async function articles(){
@@ -30,6 +31,7 @@ async function articles(){
       article.src = newsjson['results'][i]['multimedia'][0]['url']
       article.onclick = function(){window.location.href =newsjson['results'][i]['url'] }
     }
+
 }
 
-window.onload = articles;
+window.onload = Swipe;
